@@ -215,6 +215,12 @@ input,textarea{font-family:var(--font)}
 /* ─── MOBILE: FAB ─────────────────────────────────────────── */
 .fab{display:none;position:fixed;bottom:calc(var(--tab-h) + var(--safe-bot) + 13px);right:16px;width:52px;height:52px;border-radius:50%;background:var(--accent);color:#fff;font-size:28px;font-weight:300;border:none;box-shadow:0 4px 18px rgba(196,149,106,.45);z-index:35;align-items:center;justify-content:center;line-height:1;transition:transform .15s,box-shadow .15s}
 .fab:active{transform:scale(.93);box-shadow:0 2px 8px rgba(196,149,106,.3)}
+/* icon picker */
+.icon-btn{background:none;border:1px solid var(--border);border-radius:var(--rsm);padding:4px 8px;color:var(--muted);font-size:11px;display:flex;align-items:center;gap:4px;transition:all .13s;cursor:pointer}
+.icon-btn:hover{border-color:var(--accent);color:var(--accent)}
+.icon-preview-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;padding:8px 0}
+.icon-preview{width:100px;height:100px;border-radius:22px;object-fit:cover;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.icon-preview-label{font-size:12px;color:var(--muted);text-align:center;line-height:1.5}
 
 /* ─── MOBILE: panels ──────────────────────────────────────── */
 .mobile-panel{display:none;position:fixed;top:calc(var(--hdr-h) + var(--safe-top));bottom:calc(var(--tab-h) + var(--safe-bot));left:0;right:0;background:var(--bg);overflow-y:auto;z-index:30;padding:12px 12px 20px;flex-direction:column;gap:10px}
@@ -242,13 +248,18 @@ input,textarea{font-family:var(--font)}
 
 <!-- ══ HEADER ═══════════════════════════════════════════════ -->
 <header class="header">
-  <div class="app-brand">
-    <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
-      <circle cx="8.5" cy="8.5" r="7" stroke="#C4956A" stroke-width="1.5"/>
-      <path d="M8.5 4.5v4.25l2.25 1.75" stroke="#C4956A" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
+  <div class="app-brand" id="appBrand" title="Tap to change app icon" style="cursor:pointer">
+    <div id="brandIconWrap">
+      <svg id="brandClockSvg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+        <circle cx="8.5" cy="8.5" r="7" stroke="#C4956A" stroke-width="1.5"/>
+        <path d="M8.5 4.5v4.25l2.25 1.75" stroke="#C4956A" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <img id="brandIconImg" style="display:none;width:22px;height:22px;border-radius:5px;object-fit:cover" alt="">
+    </div>
     <span class="brand-text">Gentle Life</span>
   </div>
+  <!-- hidden icon file input -->
+  <input type="file" id="iconFile" accept="image/*" style="display:none">
 
   <div class="date-nav">
     <button class="nav-btn" id="prevBtn">‹</button>
@@ -435,6 +446,26 @@ input,textarea{font-family:var(--font)}
 
 <!-- ══ FAB ════════════════════════════════════════════════════ -->
 <button class="fab" id="fabAdd" aria-label="Add block">+</button>
+
+<!-- ══ ICON PICKER MODAL ══════════════════════════════════════ -->
+<div class="overlay" id="iconOverlay">
+  <div class="mini-modal" style="width:320px">
+    <div class="modal-title" style="font-size:14px;margin-bottom:4px">Home screen icon</div>
+    <div class="icon-preview-wrap" id="iconPreviewWrap">
+      <canvas id="iconPreviewCanvas" width="100" height="100" style="border-radius:22px;box-shadow:0 4px 16px rgba(0,0,0,.15)"></canvas>
+      <div class="icon-preview-label" id="iconPreviewLabel">This is your current icon.<br>Choose a photo to replace it.</div>
+    </div>
+    <div class="modal-actions" style="flex-direction:column;gap:7px">
+      <label class="btn btn-primary" style="text-align:center;cursor:pointer">
+        Choose a photo
+        <input type="file" id="iconFilePicker" accept="image/*" style="display:none">
+      </label>
+      <button class="btn btn-secondary" id="iconRemoveBtn" style="display:none">Reset to default icon</button>
+      <button class="btn btn-secondary" id="iconCancelBtn">Cancel</button>
+    </div>
+    <div style="margin-top:12px;font-size:11px;color:var(--muted);line-height:1.5;text-align:center" id="iconInstructions" style="display:none"></div>
+  </div>
+</div>
 
 <!-- ══ BLOCK MODAL ═══════════════════════════════════════════ -->
 <div class="overlay" id="blockOverlay">
@@ -1076,7 +1107,10 @@ function importData(file){
 /* ════════════════════════════════════════════════════════════
    PWA SETUP
    ════════════════════════════════════════════════════════════ */
-function installPWA(){
+/* ════════════════════════════════════════════════════════════
+   ICON MANAGEMENT
+   ════════════════════════════════════════════════════════════ */
+function makeDefaultIcon(){
   const c=document.createElement('canvas');c.width=c.height=512;
   const ctx=c.getContext('2d');
   const g=ctx.createRadialGradient(256,256,50,256,256,256);g.addColorStop(0,'#FAF8F4');g.addColorStop(1,'#F0EAE0');
@@ -1086,10 +1120,87 @@ function installPWA(){
   ctx.lineWidth=22;ctx.beginPath();ctx.moveTo(256,128);ctx.lineTo(256,256);ctx.stroke();
   ctx.lineWidth=18;ctx.beginPath();ctx.moveTo(256,256);ctx.lineTo(332,308);ctx.stroke();
   ctx.fillStyle='#C4956A';ctx.beginPath();ctx.arc(256,256,18,0,Math.PI*2);ctx.fill();
-  const link=document.createElement('link');link.rel='apple-touch-icon';link.href=c.toDataURL('image/png');document.head.appendChild(link);
-  const manifest={name:'Gentle Life',short_name:'Gentle Life',start_url:'.',display:'standalone',background_color:'#FAF8F4',theme_color:'#FAF8F4',icons:[{src:c.toDataURL('image/png'),sizes:'512x512',type:'image/png'}]};
-  const ml=document.createElement('link');ml.rel='manifest';ml.href=URL.createObjectURL(new Blob([JSON.stringify(manifest)],{type:'application/json'}));
+  return c.toDataURL('image/png');
+}
+
+function applyIcon(dataUrl){
+  // Update or create the apple-touch-icon link
+  let link=document.querySelector('link[rel="apple-touch-icon"]');
+  if(!link){link=document.createElement('link');link.rel='apple-touch-icon';document.head.appendChild(link)}
+  link.href=dataUrl;
+  // Update manifest
+  const manifest={name:'Gentle Life',short_name:'Gentle Life',start_url:'.',display:'standalone',background_color:'#FAF8F4',theme_color:'#FAF8F4',icons:[{src:dataUrl,sizes:'512x512',type:'image/png'}]};
+  let ml=document.querySelector('link[rel="manifest"]');
+  if(ml)ml.remove();
+  ml=document.createElement('link');ml.rel='manifest';ml.href=URL.createObjectURL(new Blob([JSON.stringify(manifest)],{type:'application/json'}));
   document.head.appendChild(ml);
+  // Show custom icon in brand area
+  const stored=localStorage.getItem('gl_icon');
+  const img=document.getElementById('brandIconImg');
+  const svg=document.getElementById('brandClockSvg');
+  if(stored){img.src=stored;img.style.display='';svg.style.display='none'}
+  else{img.style.display='none';svg.style.display=''}
+}
+
+function installPWA(){
+  const stored=localStorage.getItem('gl_icon');
+  const iconUrl=stored||makeDefaultIcon();
+  applyIcon(iconUrl);
+}
+
+function cropToSquareDataUrl(file, size, quality){
+  return new Promise((resolve)=>{
+    const reader=new FileReader();
+    reader.onload=e=>{
+      const img=new Image();
+      img.onload=()=>{
+        const c=document.createElement('canvas');c.width=c.height=size;
+        const ctx=c.getContext('2d');
+        const s=Math.min(img.width,img.height);
+        // center crop — grabs the most interesting part of most photos
+        const sx=(img.width-s)/2, sy=(img.height-s)/2;
+        ctx.drawImage(img,sx,sy,s,s,0,0,size,size);
+        resolve(c.toDataURL('image/jpeg',quality||0.88));
+      };
+      img.src=e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function openIconPicker(){
+  // Draw current icon into the preview canvas
+  const stored=localStorage.getItem('gl_icon');
+  const iconUrl=stored||makeDefaultIcon();
+  const img=new Image();
+  img.onload=()=>{
+    const canvas=document.getElementById('iconPreviewCanvas');
+    canvas.getContext('2d').drawImage(img,0,0,100,100);
+  };
+  img.src=iconUrl;
+  document.getElementById('iconRemoveBtn').style.display=stored?'':'none';
+  document.getElementById('iconInstructions').textContent='';
+  openOverlay('iconOverlay');
+}
+
+async function handleIconFile(file){
+  if(!file)return;
+  const dataUrl=await cropToSquareDataUrl(file,512,0.88);
+  // Show 100×100 preview
+  const img=new Image();
+  img.onload=()=>{
+    const canvas=document.getElementById('iconPreviewCanvas');
+    canvas.getContext('2d').drawImage(img,0,0,100,100);
+  };
+  img.src=dataUrl;
+  // Store and apply
+  localStorage.setItem('gl_icon',dataUrl);
+  applyIcon(dataUrl);
+  document.getElementById('iconRemoveBtn').style.display='';
+  document.getElementById('iconPreviewLabel').textContent='Looking good! ✨';
+  document.getElementById('iconInstructions').textContent=
+    'On iPhone: remove the app from your home screen, then re-open in Safari and tap Share → Add to Home Screen to see your new icon.';
+  document.getElementById('iconInstructions').style.display='';
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -1145,6 +1256,17 @@ function init(){
 
   document.getElementById('exportBtn').addEventListener('click',exportData);
   document.getElementById('importFile').addEventListener('change',e=>{importData(e.target.files[0]);e.target.value=''});
+
+  // Icon picker
+  document.getElementById('appBrand').addEventListener('click',openIconPicker);
+  document.getElementById('iconFilePicker').addEventListener('change',e=>{handleIconFile(e.target.files[0]);e.target.value=''});
+  document.getElementById('iconCancelBtn').addEventListener('click',()=>closeOverlay('iconOverlay'));
+  document.getElementById('iconRemoveBtn').addEventListener('click',()=>{
+    localStorage.removeItem('gl_icon');
+    applyIcon(makeDefaultIcon());
+    closeOverlay('iconOverlay');
+  });
+  document.getElementById('iconOverlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeOverlay('iconOverlay')});
 
   document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',()=>switchMobileTab(btn.dataset.tab)));
 
