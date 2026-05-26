@@ -458,6 +458,16 @@ input,textarea{font-family:var(--font)}
     <div class="enc-emoji" id="m_encEmoji">✨</div>
     <div class="enc-text" id="m_encText">Today counts.</div>
   </div>
+  <!-- Mobile backup/restore -->
+  <div style="display:flex;gap:8px;padding:0 2px 4px">
+    <button class="btn btn-secondary" id="m_exportBtn" style="flex:1;font-size:12px;padding:9px 0">
+      ⬇ 备份数据
+    </button>
+    <label class="btn btn-secondary" style="flex:1;font-size:12px;padding:9px 0;text-align:center;cursor:pointer">
+      ⬆ 恢复数据
+      <input type="file" id="m_importFile" accept=".json" style="display:none">
+    </label>
+  </div>
 </div>
 
 <!-- ══ TAB BAR ════════════════════════════════════════════════ -->
@@ -1604,6 +1614,8 @@ function init(){
 
   document.getElementById('exportBtn').addEventListener('click',exportData);
   document.getElementById('importFile').addEventListener('change',e=>{importData(e.target.files[0]);e.target.value=''});
+  document.getElementById('m_exportBtn').addEventListener('click',exportData);
+  document.getElementById('m_importFile').addEventListener('change',e=>{importData(e.target.files[0]);e.target.value=''});
 
   // Icon picker
   document.getElementById('appBrand').addEventListener('click',openIconPicker);
