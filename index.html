@@ -581,13 +581,13 @@ input,textarea{font-family:var(--font)}
    CONFIG
    ════════════════════════════════════════════════════════════ */
 const CAT = {
-  work:         {label:'Work',        bg:'#FDF7DC',bd:'#C9A820',tx:'#6B5200'},
-  movement:     {label:'Movement',    bg:'#E0F0E0',bd:'#50A050',tx:'#1A5A1A'},
-  learning:     {label:'Learning',    bg:'#DCE8F8',bd:'#4878C0',tx:'#183468'},
-  joy:          {label:'Joy',         bg:'#EEE0F8',bd:'#8858B8',tx:'#3C1A78'},
-  lifeAdmin:    {label:'Life Admin',  bg:'#FEE8D0',bd:'#D07828',tx:'#704000'},
-  relationship: {label:'Relationship',bg:'#FCE4EE',bd:'#D04878',tx:'#6C0830'},
-  rest:         {label:'Rest',        bg:'#EEEAE6',bd:'#9890A8',tx:'#3C3848'},
+  work:         {label:'Work',        bg:'#FFFCEE',bd:'#CEAB42',tx:'#6B5200'},
+  movement:     {label:'Movement',    bg:'#EEF8EE',bd:'#72B272',tx:'#1E521E'},
+  learning:     {label:'Learning',    bg:'#EDF4FF',bd:'#6A9CD6',tx:'#1A3C80'},
+  joy:          {label:'Joy',         bg:'#F5EEFF',bd:'#9E7CC8',tx:'#3E1870'},
+  lifeAdmin:    {label:'Life Admin',  bg:'#FFF5EC',bd:'#D09062',tx:'#703C00'},
+  relationship: {label:'Relationship',bg:'#FFF0F4',bd:'#D878A0',tx:'#7A1040'},
+  rest:         {label:'Rest',        bg:'#F2F0F8',bd:'#9894B8',tx:'#3C3860'},
 };
 const DOMAINS = [
   {id:'work',label:'Work',emoji:'💼'},
@@ -756,6 +756,10 @@ function renderGrid(){
   }
 }
 function renderBlocks(){
+  // Clean up any orphaned drag-preview/hint elements (the "ghost block" bug)
+  document.querySelectorAll('.drag-preview,.drag-hint').forEach(e=>e.remove());
+  if(previewEl){previewEl=null} if(hintEl){hintEl=null}
+  creating=false; pendingCreate=false;
   document.querySelectorAll('.time-block').forEach(e=>e.remove());
   const area=document.getElementById('blocksArea');
   (day(curKey)[mode]||[]).forEach(b=>area.appendChild(makeBlockEl(b)));
@@ -1187,15 +1191,17 @@ function navigate(dir){
    DRAG — CREATE + MOVE
    ════════════════════════════════════════════════════════════ */
 let creating=false,createStart=0,createEnd=0,previewEl=null,hintEl=null;
+let pendingCreate=false,pendingStartY=0;
+const CREATE_THRESHOLD=18; // px of drag needed before committing to block creation
 
 function setupDrag(){
   const area=document.getElementById('blocksArea');
   function onAreaStart(e){
     if(e.target.closest('.time-block'))return;
-    creating=true;createStart=clampMin(snapMin(areaYfromCY(cY(e))));createEnd=createStart+60;
-    previewEl=document.createElement('div');previewEl.className='drag-preview';
-    hintEl=document.createElement('div');hintEl.className='drag-hint';
-    area.appendChild(previewEl);area.appendChild(hintEl);updateCP();e.preventDefault();
+    const y=cY(e);
+    pendingCreate=true; pendingStartY=y;
+    createStart=clampMin(snapMin(areaYfromCY(y)));createEnd=createStart+60;
+    e.preventDefault(); // prevent scroll within area
   }
   function onMove(e){
     if(blockDrag){
@@ -1216,11 +1222,22 @@ function setupDrag(){
       }
       if(e.cancelable)e.preventDefault();return;
     }
+    // Pending: check if finger has moved enough to commit to creation
+    if(pendingCreate){
+      const dist=Math.abs(cY(e)-pendingStartY);
+      if(dist>=CREATE_THRESHOLD){
+        pendingCreate=false; creating=true;
+        previewEl=document.createElement('div');previewEl.className='drag-preview';
+        hintEl=document.createElement('div');hintEl.className='drag-hint';
+        area.appendChild(previewEl);area.appendChild(hintEl);updateCP();
+      }
+    }
     if(!creating||!previewEl)return;
     const cur=clampMin(snapMin(areaYfromCY(cY(e))));createEnd=Math.max(cur,createStart+15);updateCP();
     if(e.cancelable)e.preventDefault();
   }
   function onEnd(e){
+    pendingCreate=false; // always cancel pending on release
     if(blockDrag){
       const bd=blockDrag;blockDrag=null;bd.blockEl.classList.remove('dragging');if(bd.hintEl)bd.hintEl.remove();
       if(bd.moved&&bd._adj!==undefined){
