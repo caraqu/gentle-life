@@ -215,18 +215,6 @@ input,textarea{font-family:var(--font)}
 /* ─── MOBILE: FAB ─────────────────────────────────────────── */
 .fab{display:none;position:fixed;bottom:calc(var(--tab-h) + var(--safe-bot) + 13px);right:16px;width:52px;height:52px;border-radius:50%;background:var(--accent);color:#fff;font-size:28px;font-weight:300;border:none;box-shadow:0 4px 18px rgba(196,149,106,.45);z-index:35;align-items:center;justify-content:center;line-height:1;transition:transform .15s,box-shadow .15s}
 .fab:active{transform:scale(.93);box-shadow:0 2px 8px rgba(196,149,106,.3)}
-/* icon picker */
-.icon-btn{background:none;border:1px solid var(--border);border-radius:var(--rsm);padding:4px 8px;color:var(--muted);font-size:11px;display:flex;align-items:center;gap:4px;transition:all .13s;cursor:pointer}
-.icon-btn:hover{border-color:var(--accent);color:var(--accent)}
-.icon-preview-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;padding:8px 0}
-.icon-preview{width:100px;height:100px;border-radius:22px;object-fit:cover;box-shadow:0 4px 16px rgba(0,0,0,.15)}
-.icon-preview-label{font-size:12px;color:var(--muted);text-align:center;line-height:1.5}
-.crop-box{width:260px;height:260px;overflow:hidden;border-radius:var(--r);position:relative;background:#1a1a1a;cursor:grab;touch-action:none;user-select:none;flex-shrink:0}
-.crop-box:active{cursor:grabbing}
-#cropImgEl{position:absolute;left:50%;top:50%;transform-origin:center center;max-width:none;max-height:none;pointer-events:none}
-.crop-controls{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap;justify-content:center}
-.crop-btn{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer;color:var(--text)}
-.crop-btn:hover{background:var(--accent-soft)}
 
 /* ─── MOBILE INSIGHTS ─────────────────────────────────────── */
 .ins-toggle{display:flex;border:1px solid var(--border);border-radius:20px;overflow:hidden;align-self:flex-start;margin-bottom:14px}
@@ -279,18 +267,12 @@ input,textarea{font-family:var(--font)}
 
 <!-- ══ HEADER ═══════════════════════════════════════════════ -->
 <header class="header">
-  <div class="app-brand" id="appBrand" title="Tap to change app icon" style="cursor:pointer">
+  <div class="app-brand" id="appBrand">
     <div id="brandIconWrap">
-      <svg id="brandClockSvg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-        <circle cx="8.5" cy="8.5" r="7" stroke="#C4956A" stroke-width="1.5"/>
-        <path d="M8.5 4.5v4.25l2.25 1.75" stroke="#C4956A" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-      <img id="brandIconImg" style="display:none;width:22px;height:22px;border-radius:5px;object-fit:cover" alt="">
+      <img id="brandIconImg" style="width:22px;height:22px;border-radius:5px;object-fit:cover" src="https://raw.githubusercontent.com/caraqu/gentle-life/main/icon.png" alt="Gentle Life">
     </div>
     <span class="brand-text">Gentle Life</span>
   </div>
-  <!-- hidden icon file input -->
-  <input type="file" id="iconFile" accept="image/*" style="display:none">
 
   <div class="date-nav">
     <button class="nav-btn" id="prevBtn">‹</button>
@@ -489,61 +471,6 @@ input,textarea{font-family:var(--font)}
 <!-- ══ FAB ════════════════════════════════════════════════════ -->
 <button class="fab" id="fabAdd" aria-label="Add block">+</button>
 
-<!-- ══ ICON PICKER MODAL ══════════════════════════════════════ -->
-<div class="overlay" id="iconOverlay">
-  <div class="mini-modal" style="width:320px">
-    <div class="modal-title" style="font-size:14px;margin-bottom:4px" id="iconModalTitle">Home screen icon</div>
-
-    <!-- Panel 1: Preview + Choose -->
-    <div id="iconPanel1">
-      <div class="icon-preview-wrap">
-        <canvas id="iconPreviewCanvas" width="100" height="100" style="border-radius:22px;box-shadow:0 4px 16px rgba(0,0,0,.15)"></canvas>
-        <div class="icon-preview-label" id="iconPreviewLabel">This is your current icon.<br>Choose a photo to replace it.</div>
-      </div>
-      <div class="modal-actions" style="flex-direction:column;gap:7px">
-        <label class="btn btn-primary" style="text-align:center;cursor:pointer">
-          Choose a photo
-          <input type="file" id="iconFilePicker" accept="image/*" style="display:none">
-        </label>
-        <button class="btn btn-secondary" id="iconRemoveBtn" style="display:none">Reset to default icon</button>
-        <button class="btn btn-secondary" id="iconCancelBtn">Cancel</button>
-      </div>
-    </div>
-
-    <!-- Panel 2: Interactive crop -->
-    <div id="iconPanel2" style="display:none">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
-        <div class="crop-box" id="cropBox">
-          <img id="cropImgEl" src="" alt="">
-        </div>
-        <div class="crop-controls">
-          <button class="crop-btn" id="cropRotateBtn" title="Rotate 90°">↺ 旋转</button>
-          <button class="crop-btn" id="cropZoomOut">－</button>
-          <input type="range" id="cropZoomSlider" min="50" max="300" value="100" style="width:80px;cursor:pointer">
-          <button class="crop-btn" id="cropZoomIn">＋</button>
-        </div>
-        <p style="font-size:11px;color:var(--muted);text-align:center;margin:4px 0">拖动图片来调整位置 · 滑动或按 ＋/－ 缩放</p>
-      </div>
-      <div class="modal-actions" style="gap:8px;margin-top:10px">
-        <button class="btn btn-secondary" id="cropBackBtn">← 返回</button>
-        <button class="btn btn-primary" id="cropConfirmBtn">✓ 使用这张</button>
-      </div>
-    </div>
-
-    <!-- Panel 3: Done -->
-    <div id="iconPanel3" style="display:none">
-      <div class="icon-preview-wrap">
-        <canvas id="iconDoneCanvas" width="100" height="100" style="border-radius:22px;box-shadow:0 4px 16px rgba(0,0,0,.15)"></canvas>
-        <div class="icon-preview-label">图标已更新 ✨<br><br>在 iPhone 上：先从主屏幕删除 App，再用 Safari 重新打开，点击分享 → 添加到主屏幕，即可看到新图标。</div>
-      </div>
-      <div class="modal-actions">
-        <button class="btn btn-primary" id="iconDoneBtn">好的！</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
 <!-- ══ BLOCK MODAL ═══════════════════════════════════════════ -->
 <div class="overlay" id="blockOverlay">
   <div class="modal">
@@ -597,7 +524,7 @@ const CAT = {
   joy:          {label:'Joy',         bg:'#F5EEFF',bd:'#9E7CC8',tx:'#3E1870'},
   lifeAdmin:    {label:'Life Admin',  bg:'#FFF5EC',bd:'#D09062',tx:'#703C00'},
   relationship: {label:'Relationship',bg:'#FFF0F4',bd:'#D878A0',tx:'#7A1040'},
-  rest:         {label:'Rest',        bg:'#F2F0F8',bd:'#9894B8',tx:'#3C3860'},
+  rest:         {label:'Rest',        bg:'#F2F2F2',bd:'#A8A8A8',tx:'#555555'},
 };
 const DOMAINS = [
   {id:'work',label:'Work',emoji:'💼'},
@@ -1352,214 +1279,20 @@ function importData(file){
 /* ════════════════════════════════════════════════════════════
    PWA SETUP
    ════════════════════════════════════════════════════════════ */
-/* ════════════════════════════════════════════════════════════
-   ICON MANAGEMENT
-   ════════════════════════════════════════════════════════════ */
-function makeDefaultIcon(){
-  const c=document.createElement('canvas');c.width=c.height=512;
-  const ctx=c.getContext('2d');
-  const g=ctx.createRadialGradient(256,256,50,256,256,256);g.addColorStop(0,'#FAF8F4');g.addColorStop(1,'#F0EAE0');
-  ctx.fillStyle=g;ctx.fillRect(0,0,512,512);
-  ctx.strokeStyle='#C4956A';ctx.lineWidth=28;ctx.lineCap='round';
-  ctx.beginPath();ctx.arc(256,256,180,0,Math.PI*2);ctx.stroke();
-  ctx.lineWidth=22;ctx.beginPath();ctx.moveTo(256,128);ctx.lineTo(256,256);ctx.stroke();
-  ctx.lineWidth=18;ctx.beginPath();ctx.moveTo(256,256);ctx.lineTo(332,308);ctx.stroke();
-  ctx.fillStyle='#C4956A';ctx.beginPath();ctx.arc(256,256,18,0,Math.PI*2);ctx.fill();
-  return c.toDataURL('image/png');
-}
+const APP_ICON_URL='https://raw.githubusercontent.com/caraqu/gentle-life/main/icon.png';
 
-function applyIcon(dataUrl){
-  // Update or create the apple-touch-icon link
+function installPWA(){
+  // Set apple-touch-icon
   let link=document.querySelector('link[rel="apple-touch-icon"]');
   if(!link){link=document.createElement('link');link.rel='apple-touch-icon';document.head.appendChild(link)}
-  link.href=dataUrl;
-  // Update manifest
-  const manifest={name:'Gentle Life',short_name:'Gentle Life',start_url:'.',display:'standalone',background_color:'#FAF8F4',theme_color:'#FAF8F4',icons:[{src:dataUrl,sizes:'512x512',type:'image/png'}]};
+  link.href=APP_ICON_URL;
+  // Set PWA manifest
+  const manifest={name:'Gentle Life',short_name:'Gentle Life',start_url:'.',display:'standalone',background_color:'#FAF8F4',theme_color:'#FAF8F4',icons:[{src:APP_ICON_URL,sizes:'512x512',type:'image/png'}]};
   let ml=document.querySelector('link[rel="manifest"]');
   if(ml)ml.remove();
   ml=document.createElement('link');ml.rel='manifest';ml.href=URL.createObjectURL(new Blob([JSON.stringify(manifest)],{type:'application/json'}));
   document.head.appendChild(ml);
-  // Show custom icon in brand area
-  const stored=localStorage.getItem('gl_icon');
-  const img=document.getElementById('brandIconImg');
-  const svg=document.getElementById('brandClockSvg');
-  if(stored){img.src=stored;img.style.display='';svg.style.display='none'}
-  else{img.style.display='none';svg.style.display=''}
 }
-
-function installPWA(){
-  const stored=localStorage.getItem('gl_icon');
-  const iconUrl=stored||makeDefaultIcon();
-  applyIcon(iconUrl);
-}
-
-/* ─── Interactive icon crop ─────────────────────────────── */
-let cImg=null, cPanX=0, cPanY=0, cScale=1, cRot=0, _cBase=1;
-const CBOX=260;
-
-function cropUpdateBase(){
-  if(!cImg)return;
-  const rad=cRot*Math.PI/180;
-  // For 90/270 deg, width and height swap in terms of bounding box
-  const swapped=(Math.abs(Math.round(cRot/90)%2)===1);
-  const W=swapped?cImg.naturalHeight:cImg.naturalWidth;
-  const H=swapped?cImg.naturalWidth:cImg.naturalHeight;
-  _cBase=Math.max(CBOX/W, CBOX/H);
-}
-
-function cropClamp(){
-  // After rotation+scale the image covers at least CBOX px in each direction.
-  // We work in "img pixel" space so we clamp pan to keep edges inside the box.
-  if(!cImg)return;
-  const rad=cRot*Math.PI/180;
-  const cos=Math.abs(Math.cos(rad)), sin=Math.abs(Math.sin(rad));
-  const totalScale=_cBase*cScale;
-  // Effective half-extents of the rotated image in screen px
-  const hw=(cImg.naturalWidth*cos+cImg.naturalHeight*sin)*totalScale/2;
-  const hh=(cImg.naturalWidth*sin+cImg.naturalHeight*cos)*totalScale/2;
-  const halfBox=CBOX/2;
-  const maxX=hw-halfBox; const maxY=hh-halfBox;
-  cPanX=Math.max(-maxX,Math.min(maxX,cPanX));
-  cPanY=Math.max(-maxY,Math.min(maxY,cPanY));
-}
-
-function cropRefresh(){
-  const el=document.getElementById('cropImgEl');
-  if(!el)return;
-  el.style.transform=`translate(calc(-50% + ${cPanX}px), calc(-50% + ${cPanY}px)) rotate(${cRot}deg) scale(${_cBase*cScale})`;
-  document.getElementById('cropZoomSlider').value=Math.round(cScale*100);
-}
-
-function cropConfirm(){
-  const SIZE=512;
-  const c=document.createElement('canvas');c.width=c.height=SIZE;
-  const ctx=c.getContext('2d');
-  const totalScale=_cBase*cScale;
-  const SF=SIZE/CBOX; // scale from screen pixels to canvas pixels
-  ctx.save();
-  ctx.translate(SIZE/2, SIZE/2);
-  ctx.translate(cPanX*SF, cPanY*SF);
-  ctx.rotate(cRot*Math.PI/180);
-  ctx.scale(totalScale*SF, totalScale*SF);
-  ctx.drawImage(cImg, -cImg.naturalWidth/2, -cImg.naturalHeight/2);
-  ctx.restore();
-  const dataUrl=c.toDataURL('image/jpeg',0.9);
-  // Show in done canvas
-  const doneC=document.getElementById('iconDoneCanvas');
-  const di=new Image();
-  di.onload=()=>doneC.getContext('2d').drawImage(di,0,0,100,100);
-  di.src=dataUrl;
-  // Also update preview canvas for panel 1
-  const pi=new Image();
-  pi.onload=()=>document.getElementById('iconPreviewCanvas').getContext('2d').drawImage(pi,0,0,100,100);
-  pi.src=dataUrl;
-  // Persist
-  localStorage.setItem('gl_icon',dataUrl);
-  applyIcon(dataUrl);
-  document.getElementById('iconRemoveBtn').style.display='';
-  showIconPanel(3);
-}
-
-function showIconPanel(n){
-  document.getElementById('iconPanel1').style.display=n===1?'':'none';
-  document.getElementById('iconPanel2').style.display=n===2?'':'none';
-  document.getElementById('iconPanel3').style.display=n===3?'':'none';
-}
-
-function openIconPicker(){
-  const stored=localStorage.getItem('gl_icon');
-  const iconUrl=stored||makeDefaultIcon();
-  const img=new Image();
-  img.onload=()=>document.getElementById('iconPreviewCanvas').getContext('2d').drawImage(img,0,0,100,100);
-  img.src=iconUrl;
-  document.getElementById('iconRemoveBtn').style.display=stored?'':'none';
-  document.getElementById('iconPreviewLabel').textContent='This is your current icon.\nChoose a photo to replace it.';
-  showIconPanel(1);
-  openOverlay('iconOverlay');
-}
-
-function handleIconFile(file){
-  if(!file)return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    cImg=new Image();
-    cImg.onload=()=>{
-      // Reset crop state
-      cPanX=0;cPanY=0;cScale=1;cRot=0;
-      cropUpdateBase();
-      cropClamp();
-      // Show image in crop box
-      const el=document.getElementById('cropImgEl');
-      el.src=cImg.src;
-      cropRefresh();
-      showIconPanel(2);
-    };
-    cImg.src=e.target.result;
-  };
-  reader.readAsDataURL(file);
-}
-
-// ── Crop drag / pinch / scroll ───────────────────────────
-(function setupCropInteraction(){
-  let dragActive=false, lastX=0, lastY=0;
-  let pinchDist0=null, pinchScale0=1;
-
-  function getDist(t){
-    const dx=t[0].clientX-t[1].clientX, dy=t[0].clientY-t[1].clientY;
-    return Math.sqrt(dx*dx+dy*dy);
-  }
-
-  function onPointerDown(e){
-    if(document.getElementById('iconPanel2').style.display==='none')return;
-    if(e.touches){
-      if(e.touches.length===2){
-        pinchDist0=getDist(e.touches);
-        pinchScale0=cScale;
-        e.preventDefault();
-      } else if(e.touches.length===1){
-        dragActive=true;lastX=e.touches[0].clientX;lastY=e.touches[0].clientY;
-      }
-    } else {
-      dragActive=true;lastX=e.clientX;lastY=e.clientY;
-    }
-  }
-  function onPointerMove(e){
-    if(document.getElementById('iconPanel2').style.display==='none')return;
-    if(e.touches&&e.touches.length===2&&pinchDist0!==null){
-      const d=getDist(e.touches);
-      cScale=Math.max(0.5,Math.min(3,pinchScale0*(d/pinchDist0)));
-      cropClamp();cropRefresh();
-      e.preventDefault();return;
-    }
-    if(!dragActive)return;
-    const cx=e.touches?e.touches[0].clientX:e.clientX;
-    const cy=e.touches?e.touches[0].clientY:e.clientY;
-    cPanX+=cx-lastX;cPanY+=cy-lastY;
-    lastX=cx;lastY=cy;
-    cropClamp();cropRefresh();
-    if(e.touches)e.preventDefault();
-  }
-  function onPointerUp(e){
-    dragActive=false;
-    if(!e.touches||e.touches.length<2)pinchDist0=null;
-  }
-
-  // Called from init() after DOM is ready
-  window._setupCropBox=function(){
-    const box=document.getElementById('cropBox');
-    box.addEventListener('mousedown',onPointerDown);
-    box.addEventListener('touchstart',onPointerDown,{passive:false});
-    document.addEventListener('mousemove',onPointerMove);
-    document.addEventListener('touchmove',onPointerMove,{passive:false});
-    document.addEventListener('mouseup',onPointerUp);
-    document.addEventListener('touchend',onPointerUp);
-    box.addEventListener('wheel',e=>{
-      if(document.getElementById('iconPanel2').style.display==='none')return;
-      cScale=Math.max(0.5,Math.min(3,cScale*(e.deltaY<0?1.08:0.92)));
-      cropClamp();cropRefresh();e.preventDefault();
-    },{passive:false});
-  };
-})();
 
 /* ════════════════════════════════════════════════════════════
    OVERLAYS
@@ -1616,35 +1349,6 @@ function init(){
   document.getElementById('importFile').addEventListener('change',e=>{importData(e.target.files[0]);e.target.value=''});
   document.getElementById('m_exportBtn').addEventListener('click',exportData);
   document.getElementById('m_importFile').addEventListener('change',e=>{importData(e.target.files[0]);e.target.value=''});
-
-  // Icon picker
-  document.getElementById('appBrand').addEventListener('click',openIconPicker);
-  document.getElementById('iconFilePicker').addEventListener('change',e=>{handleIconFile(e.target.files[0]);e.target.value=''});
-  document.getElementById('iconCancelBtn').addEventListener('click',()=>closeOverlay('iconOverlay'));
-  document.getElementById('iconRemoveBtn').addEventListener('click',()=>{
-    localStorage.removeItem('gl_icon');
-    applyIcon(makeDefaultIcon());
-    closeOverlay('iconOverlay');
-  });
-  document.getElementById('iconOverlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeOverlay('iconOverlay')});
-  // Crop panel buttons
-  document.getElementById('cropBackBtn').addEventListener('click',()=>showIconPanel(1));
-  document.getElementById('cropConfirmBtn').addEventListener('click',cropConfirm);
-  document.getElementById('iconDoneBtn').addEventListener('click',()=>closeOverlay('iconOverlay'));
-  document.getElementById('cropRotateBtn').addEventListener('click',()=>{
-    cRot=(cRot+90)%360;
-    cropUpdateBase();cropClamp();cropRefresh();
-  });
-  document.getElementById('cropZoomIn').addEventListener('click',()=>{
-    cScale=Math.min(3,cScale*1.15);cropClamp();cropRefresh();
-  });
-  document.getElementById('cropZoomOut').addEventListener('click',()=>{
-    cScale=Math.max(0.5,cScale/1.15);cropClamp();cropRefresh();
-  });
-  document.getElementById('cropZoomSlider').addEventListener('input',e=>{
-    cScale=parseInt(e.target.value)/100;cropClamp();cropRefresh();
-  });
-  window._setupCropBox();
 
   document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',()=>switchMobileTab(btn.dataset.tab)));
 
