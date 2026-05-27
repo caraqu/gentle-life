@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#FAF8F4">
 <title>Gentle Life</title>
 <style>
-/* ─── TOKENS ──────────────────────────────────────────────── */
+/* âââ TOKENS ââââââââââââââââââââââââââââââââââââââââââââââââ */
 :root {
   --bg:         #FAF8F4;
   --surface:    #FFFFFF;
@@ -36,7 +36,7 @@ button{font-family:var(--font);cursor:pointer;-webkit-tap-highlight-color:transp
 input,textarea{font-family:var(--font)}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 
-/* ─── HEADER ──────────────────────────────────────────────── */
+/* âââ HEADER ââââââââââââââââââââââââââââââââââââââââââââââââ */
 .header{display:flex;align-items:center;justify-content:space-between;padding:0 18px;height:var(--hdr-h);background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0;gap:10px}
 .app-brand{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:var(--accent);letter-spacing:-.01em;white-space:nowrap;flex-shrink:0}
 .date-nav{display:flex;align-items:center;gap:8px;flex:1;justify-content:center}
@@ -79,10 +79,10 @@ input,textarea{font-family:var(--font)}
 .tmpl-del{font-size:14px;border:none;background:none;color:var(--muted);width:20px;height:20px;display:flex;align-items:center;justify-content:center;border-radius:3px;transition:all .12s}
 .tmpl-del:hover{background:#FEE8E8;color:#C04040}
 
-/* ─── MAIN LAYOUT ─────────────────────────────────────────── */
+/* âââ MAIN LAYOUT âââââââââââââââââââââââââââââââââââââââââââ */
 .main{display:flex;flex:1;overflow:hidden}
 
-/* ─── DAY GRID ────────────────────────────────────────────── */
+/* âââ DAY GRID ââââââââââââââââââââââââââââââââââââââââââââââ */
 .grid-scroll{flex:1;overflow-y:auto;padding:16px 14px 40px}
 .grid-wrapper{display:flex}
 .time-labels{width:48px;flex-shrink:0;position:relative;margin-top:-8px}
@@ -103,7 +103,7 @@ input,textarea{font-family:var(--font)}
 .drag-hint{position:absolute;left:4px;right:4px;pointer-events:none;z-index:11;font-size:10px;font-weight:600;color:var(--accent);text-align:center;padding-top:5px}
 .move-hint{position:absolute;inset:0;pointer-events:none;z-index:21;font-size:10px;font-weight:700;color:#fff;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.4);padding-top:4px}
 
-/* ─── WEEK VIEW ───────────────────────────────────────────── */
+/* âââ WEEK VIEW âââââââââââââââââââââââââââââââââââââââââââââ */
 .week-view{flex:1;overflow-y:auto;padding:16px 14px 40px;display:none;flex-direction:column;gap:24px}
 .week-grid-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
 .week-day-headers{display:grid;border-bottom:1px solid var(--border)}
@@ -124,7 +124,7 @@ input,textarea{font-family:var(--font)}
 .week-block:hover{opacity:.8;z-index:5}
 .week-block-label{font-size:9px;font-weight:600;padding:2px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-/* ─── MONTH VIEW ──────────────────────────────────────────── */
+/* âââ MONTH VIEW ââââââââââââââââââââââââââââââââââââââââââââ */
 .month-view{flex:1;overflow-y:auto;padding:16px 14px 40px;display:none;flex-direction:column;gap:24px}
 .month-cal-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
 .month-day-headers{display:grid;grid-template-columns:repeat(7,1fr);border-bottom:1px solid var(--border)}
@@ -138,7 +138,7 @@ input,textarea{font-family:var(--font)}
 .mc-strips{display:flex;gap:2px;flex-wrap:wrap;margin-top:2px}
 .mc-strip{height:5px;border-radius:2px;flex-shrink:0}
 
-/* ─── BREAKDOWN CHART ─────────────────────────────────────── */
+/* âââ BREAKDOWN CHART âââââââââââââââââââââââââââââââââââââââ */
 .breakdown-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px}
 .breakdown-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
 .breakdown-empty{font-size:13px;color:var(--muted);padding:8px 0}
@@ -150,7 +150,7 @@ input,textarea{font-family:var(--font)}
 .bd-hours{width:36px;text-align:right;font-size:11.5px;color:var(--muted);flex-shrink:0;font-variant-numeric:tabular-nums}
 .breakdown-footer{margin-top:14px;font-size:11.5px;color:var(--muted);border-top:1px solid var(--bsoft);padding-top:11px}
 
-/* ─── SIDE PANEL ──────────────────────────────────────────── */
+/* âââ SIDE PANEL ââââââââââââââââââââââââââââââââââââââââââââ */
 .side-panel{width:264px;flex-shrink:0;overflow-y:auto;padding:13px 13px 40px;border-left:1px solid var(--border);display:flex;flex-direction:column;gap:10px}
 .panel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:13px}
 .card-title{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:11px}
@@ -172,13 +172,13 @@ input,textarea{font-family:var(--font)}
 .enc-emoji{font-size:20px;margin-bottom:4px}
 .enc-text{font-size:12px;color:var(--accent-dk);font-weight:500;line-height:1.4}
 
-/* ─── LEGEND ──────────────────────────────────────────────── */
+/* âââ LEGEND ââââââââââââââââââââââââââââââââââââââââââââââââ */
 .legend{display:flex;align-items:center;gap:12px;padding:7px 18px;border-top:1px solid var(--border);background:var(--surface);flex-shrink:0;flex-wrap:wrap}
 .legend-item{display:flex;align-items:center;gap:4px;font-size:10.5px;color:var(--muted)}
 .legend-sw{width:9px;height:9px;border-radius:3px;flex-shrink:0}
 .legend-hint{margin-left:auto;font-size:10.5px;color:var(--muted)}
 
-/* ─── MODAL ───────────────────────────────────────────────── */
+/* âââ MODAL âââââââââââââââââââââââââââââââââââââââââââââââââ */
 .overlay{position:fixed;inset:0;background:rgba(30,20,10,.28);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;z-index:200;opacity:0;pointer-events:none;transition:opacity .18s}
 .overlay.open{opacity:1;pointer-events:all}
 .modal{background:var(--surface);border-radius:16px;padding:22px;width:370px;max-width:calc(100vw - 28px);box-shadow:0 24px 64px rgba(0,0,0,.14);transform:translateY(6px) scale(.98);transition:transform .2s}
@@ -205,18 +205,18 @@ input,textarea{font-family:var(--font)}
 .mini-modal{background:var(--surface);border-radius:var(--r);padding:18px;width:290px;max-width:calc(100vw - 28px);box-shadow:0 16px 48px rgba(0,0,0,.13);transform:translateY(6px);transition:transform .18s}
 .overlay.open .mini-modal{transform:none}
 
-/* ─── MOBILE: tab bar ─────────────────────────────────────── */
+/* âââ MOBILE: tab bar âââââââââââââââââââââââââââââââââââââââ */
 .tab-bar{display:none;position:fixed;bottom:0;left:0;right:0;height:calc(var(--tab-h) + var(--safe-bot));padding-bottom:var(--safe-bot);background:var(--surface);border-top:1px solid var(--border);z-index:40}
 .tab-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:none;background:none;color:var(--muted);font-size:10px;font-weight:500;padding:7px 0 3px;transition:color .15s;-webkit-tap-highlight-color:transparent}
 .tab-btn.active{color:var(--accent)}
 .tab-btn svg{transition:transform .15s}
 .tab-btn.active svg{transform:scale(1.08)}
 
-/* ─── MOBILE: FAB ─────────────────────────────────────────── */
+/* âââ MOBILE: FAB âââââââââââââââââââââââââââââââââââââââââââ */
 .fab{display:none;position:fixed;bottom:calc(var(--tab-h) + var(--safe-bot) + 13px);right:16px;width:52px;height:52px;border-radius:50%;background:var(--accent);color:#fff;font-size:28px;font-weight:300;border:none;box-shadow:0 4px 18px rgba(196,149,106,.45);z-index:35;align-items:center;justify-content:center;line-height:1;transition:transform .15s,box-shadow .15s}
 .fab:active{transform:scale(.93);box-shadow:0 2px 8px rgba(196,149,106,.3)}
 
-/* ─── MOBILE INSIGHTS ─────────────────────────────────────── */
+/* âââ MOBILE INSIGHTS âââââââââââââââââââââââââââââââââââââââ */
 .ins-toggle{display:flex;border:1px solid var(--border);border-radius:20px;overflow:hidden;align-self:flex-start;margin-bottom:14px}
 .ins-tog-btn{padding:6px 18px;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;background:transparent;border:none;transition:all .15s}
 .ins-tog-btn.active{background:var(--accent);color:#fff}
@@ -241,11 +241,11 @@ input,textarea{font-family:var(--font)}
 .mc2-strip{height:6px;border-radius:2px;overflow:hidden;display:flex}
 .mc2-seg{height:100%}
 
-/* ─── MOBILE: panels ──────────────────────────────────────── */
+/* âââ MOBILE: panels ââââââââââââââââââââââââââââââââââââââââ */
 .mobile-panel{display:none;position:fixed;top:calc(var(--hdr-h) + var(--safe-top));bottom:calc(var(--tab-h) + var(--safe-bot));left:0;right:0;background:var(--bg);overflow-y:auto;z-index:30;padding:12px 12px 20px;flex-direction:column;gap:10px}
 .mobile-panel.active{display:flex}
 
-/* ─── RESPONSIVE ──────────────────────────────────────────── */
+/* âââ RESPONSIVE ââââââââââââââââââââââââââââââââââââââââââââ */
 @media(max-width:767px){
   .header{padding:0 12px;gap:6px}
   .brand-text{display:none}
@@ -265,7 +265,7 @@ input,textarea{font-family:var(--font)}
 </head>
 <body>
 
-<!-- ══ HEADER ═══════════════════════════════════════════════ -->
+<!-- ââ HEADER âââââââââââââââââââââââââââââââââââââââââââââââ -->
 <header class="header">
   <div class="app-brand" id="appBrand">
     <div id="brandIconWrap">
@@ -275,12 +275,12 @@ input,textarea{font-family:var(--font)}
   </div>
 
   <div class="date-nav">
-    <button class="nav-btn" id="prevBtn">‹</button>
+    <button class="nav-btn" id="prevBtn">â¹</button>
     <div class="date-center">
       <div class="date-display" id="dateDisplay"></div>
       <div class="date-sub" id="dateSub"></div>
     </div>
-    <button class="nav-btn" id="nextBtn">›</button>
+    <button class="nav-btn" id="nextBtn">âº</button>
   </div>
 
   <div class="hdr-right">
@@ -328,7 +328,7 @@ input,textarea{font-family:var(--font)}
   </div>
 </header>
 
-<!-- ══ MAIN ══════════════════════════════════════════════════ -->
+<!-- ââ MAIN ââââââââââââââââââââââââââââââââââââââââââââââââââ -->
 <div class="main">
 
   <!-- Day view -->
@@ -366,16 +366,16 @@ input,textarea{font-family:var(--font)}
       <div class="card-title">How are you today?</div>
       <div class="pill-row-label">Energy</div>
       <div class="pill-row">
-        <button class="pill" data-f="energy" data-v="high">✨ High</button>
-        <button class="pill" data-f="energy" data-v="medium">〰 Medium</button>
-        <button class="pill" data-f="energy" data-v="low">🌙 Low</button>
+        <button class="pill" data-f="energy" data-v="high">â¨ High</button>
+        <button class="pill" data-f="energy" data-v="medium">ã° Medium</button>
+        <button class="pill" data-f="energy" data-v="low">ð Low</button>
       </div>
       <div class="pill-row-label">Mood</div>
       <div class="pill-row">
-        <button class="pill" data-f="mood" data-v="peaceful">🌿 Peaceful</button>
-        <button class="pill" data-f="mood" data-v="okay">🙂 Okay</button>
-        <button class="pill" data-f="mood" data-v="anxious">🌀 Anxious</button>
-        <button class="pill" data-f="mood" data-v="emotional">💧 Emotional</button>
+        <button class="pill" data-f="mood" data-v="peaceful">ð¿ Peaceful</button>
+        <button class="pill" data-f="mood" data-v="okay">ð Okay</button>
+        <button class="pill" data-f="mood" data-v="anxious">ð Anxious</button>
+        <button class="pill" data-f="mood" data-v="emotional">ð§ Emotional</button>
       </div>
     </div>
     <div class="panel-card">
@@ -387,18 +387,18 @@ input,textarea{font-family:var(--font)}
       <textarea class="note-ta" id="noteTa" placeholder="What most affected you today?"></textarea>
     </div>
     <div class="enc-card">
-      <div class="enc-emoji" id="encEmoji">✨</div>
+      <div class="enc-emoji" id="encEmoji">â¨</div>
       <div class="enc-text" id="encText">Today counts.</div>
     </div>
   </aside>
 </div>
 
-<!-- ══ LEGEND ════════════════════════════════════════════════ -->
+<!-- ââ LEGEND ââââââââââââââââââââââââââââââââââââââââââââââââ -->
 <div class="legend" id="legend">
   <span class="legend-hint">Click &amp; drag the grid to add a block</span>
 </div>
 
-<!-- ══ MOBILE PANELS ═════════════════════════════════════════ -->
+<!-- ââ MOBILE PANELS âââââââââââââââââââââââââââââââââââââââââ -->
 
 <!-- Trends panel: color tapestry + week/month toggle -->
 <div class="mobile-panel" id="mInsights">
@@ -416,16 +416,16 @@ input,textarea{font-family:var(--font)}
     <div class="card-title">How are you today?</div>
     <div class="pill-row-label">Energy</div>
     <div class="pill-row">
-      <button class="pill" data-f="energy" data-v="high">✨ High</button>
-      <button class="pill" data-f="energy" data-v="medium">〰 Medium</button>
-      <button class="pill" data-f="energy" data-v="low">🌙 Low</button>
+      <button class="pill" data-f="energy" data-v="high">â¨ High</button>
+      <button class="pill" data-f="energy" data-v="medium">ã° Medium</button>
+      <button class="pill" data-f="energy" data-v="low">ð Low</button>
     </div>
     <div class="pill-row-label">Mood</div>
     <div class="pill-row">
-      <button class="pill" data-f="mood" data-v="peaceful">🌿 Peaceful</button>
-      <button class="pill" data-f="mood" data-v="okay">🙂 Okay</button>
-      <button class="pill" data-f="mood" data-v="anxious">🌀 Anxious</button>
-      <button class="pill" data-f="mood" data-v="emotional">💧 Emotional</button>
+      <button class="pill" data-f="mood" data-v="peaceful">ð¿ Peaceful</button>
+      <button class="pill" data-f="mood" data-v="okay">ð Okay</button>
+      <button class="pill" data-f="mood" data-v="anxious">ð Anxious</button>
+      <button class="pill" data-f="mood" data-v="emotional">ð§ Emotional</button>
     </div>
   </div>
   <div class="panel-card">
@@ -434,25 +434,25 @@ input,textarea{font-family:var(--font)}
   </div>
   <div class="panel-card">
     <div class="card-title">One thing worth noting today</div>
-    <textarea class="note-ta" id="m_noteTa" style="min-height:110px" placeholder="What most affected you? A moment, a feeling, anything…"></textarea>
+    <textarea class="note-ta" id="m_noteTa" style="min-height:110px" placeholder="What most affected you? A moment, a feeling, anythingâ¦"></textarea>
   </div>
   <div class="enc-card">
-    <div class="enc-emoji" id="m_encEmoji">✨</div>
+    <div class="enc-emoji" id="m_encEmoji">â¨</div>
     <div class="enc-text" id="m_encText">Today counts.</div>
   </div>
   <!-- Mobile backup/restore -->
   <div style="display:flex;gap:8px;padding:0 2px 4px">
     <button class="btn btn-secondary" id="m_exportBtn" style="flex:1;font-size:12px;padding:9px 0">
-      ⬇ 备份数据
+      â¬ å¤ä»½æ°æ®
     </button>
     <label class="btn btn-secondary" style="flex:1;font-size:12px;padding:9px 0;text-align:center;cursor:pointer">
-      ⬆ 恢复数据
+      â¬ æ¢å¤æ°æ®
       <input type="file" id="m_importFile" accept=".json" style="display:none">
     </label>
   </div>
 </div>
 
-<!-- ══ TAB BAR ════════════════════════════════════════════════ -->
+<!-- ââ TAB BAR ââââââââââââââââââââââââââââââââââââââââââââââââ -->
 <div class="tab-bar" id="tabBar">
   <button class="tab-btn active" data-tab="day">
     <svg width="19" height="19" viewBox="0 0 19 19" fill="none"><rect x="2" y="3.5" width="15" height="13" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M6 2v3M13 2v3M2 8.5h15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
@@ -468,28 +468,32 @@ input,textarea{font-family:var(--font)}
   </button>
 </div>
 
-<!-- ══ FAB ════════════════════════════════════════════════════ -->
+<!-- ââ FAB ââââââââââââââââââââââââââââââââââââââââââââââââââââ -->
 <button class="fab" id="fabAdd" aria-label="Add block">+</button>
 
-<!-- ══ BLOCK MODAL ═══════════════════════════════════════════ -->
+<!-- ââ BLOCK MODAL âââââââââââââââââââââââââââââââââââââââââââ -->
 <div class="overlay" id="blockOverlay">
   <div class="modal">
     <div class="modal-title" id="modalTitle">Add time block</div>
     <div class="form-group">
       <label class="form-label">What are you doing?</label>
-      <input class="form-input" type="text" id="blockLabel" placeholder="Deep work, Walk, Dinner with…">
+      <input class="form-input" type="text" id="blockLabel" placeholder="Deep work, Walk, Dinner withâ¦">
     </div>
     <div class="form-group">
       <label class="form-label">Time</label>
       <div class="time-row">
         <input class="form-input" type="time" id="blockStart" style="flex:1">
-        <span class="time-sep">→</span>
+        <span class="time-sep">â</span>
         <input class="form-input" type="time" id="blockEnd" style="flex:1">
       </div>
     </div>
     <div class="form-group">
       <label class="form-label">Category</label>
       <div class="cat-grid" id="catGrid"></div>
+    </div>
+    <div class="form-group" id="blockDateGroup" style="display:none">
+      <label class="form-label">Move to date</label>
+      <input class="form-input" type="date" id="blockDate">
     </div>
     <div class="modal-actions">
       <button class="btn btn-secondary" id="modalCancel">Cancel</button>
@@ -499,12 +503,12 @@ input,textarea{font-family:var(--font)}
   </div>
 </div>
 
-<!-- ══ TEMPLATE NAME MODAL ═══════════════════════════════════ -->
+<!-- ââ TEMPLATE NAME MODAL âââââââââââââââââââââââââââââââââââ -->
 <div class="overlay" id="tmplOverlay">
   <div class="mini-modal">
     <div class="modal-title" style="font-size:14px;margin-bottom:13px">Name this routine</div>
     <div class="form-group" style="margin-bottom:13px">
-      <input class="form-input" type="text" id="tmplNameInput" placeholder="Weekday, Rest Day, Gym Day…">
+      <input class="form-input" type="text" id="tmplNameInput" placeholder="Weekday, Rest Day, Gym Dayâ¦">
     </div>
     <div class="modal-actions">
       <button class="btn btn-secondary" id="tmplCancel">Cancel</button>
@@ -514,9 +518,9 @@ input,textarea{font-family:var(--font)}
 </div>
 
 <script>
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    CONFIG
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 const CAT = {
   work:         {label:'Work',        bg:'#FFFCEE',bd:'#CEAB42',tx:'#6B5200'},
   movement:     {label:'Movement',    bg:'#EEF8EE',bd:'#72B272',tx:'#1E521E'},
@@ -527,23 +531,23 @@ const CAT = {
   rest:         {label:'Rest',        bg:'#F2F2F2',bd:'#A8A8A8',tx:'#555555'},
 };
 const DOMAINS = [
-  {id:'work',label:'Work',emoji:'💼'},
-  {id:'movement',label:'Movement',emoji:'🏃'},
-  {id:'learning',label:'Learning',emoji:'📚'},
-  {id:'joy',label:'Joy',emoji:'✨'},
-  {id:'relationship',label:'Relationship',emoji:'🤝'},
-  {id:'lifeAdmin',label:'Life Admin',emoji:'📋'},
-  {id:'rest',label:'Rest',emoji:'🌙'},
+  {id:'work',label:'Work',emoji:'ð¼'},
+  {id:'movement',label:'Movement',emoji:'ð'},
+  {id:'learning',label:'Learning',emoji:'ð'},
+  {id:'joy',label:'Joy',emoji:'â¨'},
+  {id:'relationship',label:'Relationship',emoji:'ð¤'},
+  {id:'lifeAdmin',label:'Life Admin',emoji:'ð'},
+  {id:'rest',label:'Rest',emoji:'ð'},
 ];
 const ENC = [
-  ['🌸','You touched so many parts of your life today.'],
-  ['✨','Look at everything you carried today.'],
-  ['🌿','You showed up for yourself. That matters.'],
-  ['💛','Progress isn\'t always loud. Yours counted today.'],
-  ['🫧','Gentle days are valid days.'],
-  ['🌙','Rest is also how we move forward.'],
-  ['☀️','Every little thing you did today was enough.'],
-  ['🌱','Small steps are still steps. Today counted.'],
+  ['ð¸','You touched so many parts of your life today.'],
+  ['â¨','Look at everything you carried today.'],
+  ['ð¿','You showed up for yourself. That matters.'],
+  ['ð','Progress isn\'t always loud. Yours counted today.'],
+  ['ð«§','Gentle days are valid days.'],
+  ['ð','Rest is also how we move forward.'],
+  ['âï¸','Every little thing you did today was enough.'],
+  ['ð±','Small steps are still steps. Today counted.'],
 ];
 const SLOT_H  = 48;
 const WSLOT_H = 28;   // week-view: px per 30 min
@@ -556,9 +560,9 @@ const WDAYS   = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 const MONTHS  = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const MDAYS   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    STATE
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 let curDate   = new Date();
 let curKey    = '';
 let view      = 'day';      // 'day' | 'week' | 'month'
@@ -569,9 +573,9 @@ let db        = {};
 let blockDrag = null;
 let activeTab = 'day';      // mobile
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    PERSISTENCE
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function loadDB(){try{db=JSON.parse(localStorage.getItem('gl_v3')||'{}')}catch{db={}}}
 function saveDB(){localStorage.setItem('gl_v3',JSON.stringify(db))}
 function dayKey(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return`${y}-${m}-${day}`}
@@ -580,9 +584,9 @@ function day(key){
   return db[key];
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    TIME UTILS
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function toMin(t){const[h,m]=t.split(':').map(Number);return h*60+m}
 function toTime(m){return`${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`}
 function relY(t){return((toMin(t)-START_H*60)/30)*SLOT_H}
@@ -627,9 +631,9 @@ function aggregateHours(keys){
   return h;
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    RENDER ROUTER
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function render(){
   curKey=dayKey(curDate);
   renderHeader();
@@ -640,9 +644,9 @@ function render(){
   renderCheckin();renderDomains();renderNote();renderEnc();
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    HEADER
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function renderHeader(){
   const d=curDate;
   // Mobile insights header depends on sub-toggle
@@ -650,7 +654,7 @@ function renderHeader(){
     if(mInsMode==='week'){
       const wd=getWeekDates(d);
       const fmt=x=>`${MONTHS[x.getMonth()].slice(0,3)} ${x.getDate()}`;
-      document.getElementById('dateDisplay').textContent=`${fmt(wd[0])} – ${fmt(wd[6])}`;
+      document.getElementById('dateDisplay').textContent=`${fmt(wd[0])} â ${fmt(wd[6])}`;
       document.getElementById('dateSub').textContent=wd[0].getFullYear()+'';
     } else {
       document.getElementById('dateDisplay').textContent=`${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
@@ -665,7 +669,7 @@ function renderHeader(){
   } else if(view==='week'){
     const wd=getWeekDates(d);
     const fmt=x=>`${MONTHS[x.getMonth()].slice(0,3)} ${x.getDate()}`;
-    document.getElementById('dateDisplay').textContent=`${fmt(wd[0])} – ${fmt(wd[6])}`;
+    document.getElementById('dateDisplay').textContent=`${fmt(wd[0])} â ${fmt(wd[6])}`;
     document.getElementById('dateSub').textContent=wd[0].getFullYear()+'';
   } else {
     document.getElementById('dateDisplay').textContent=`${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
@@ -673,9 +677,9 @@ function renderHeader(){
   }
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    DAY GRID
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function renderGrid(){
   const labels=document.getElementById('timeLabels');
   const area=document.getElementById('blocksArea');
@@ -708,8 +712,8 @@ function makeBlockEl(b){
   el.className='time-block';el.dataset.id=b.id;
   el.style.cssText=`top:${top}px;height:${h}px;background:${c.bg};border-left-color:${c.bd};color:${c.tx}`;
   const lbl=document.createElement('div');lbl.className='block-label';lbl.textContent=b.label||c.label;el.appendChild(lbl);
-  if(h>32){const tm=document.createElement('div');tm.className='block-time';tm.textContent=`${fmtTime(b.start)} – ${fmtTime(b.end)}`;el.appendChild(tm)}
-  if(mode==='actual'){const ba=document.createElement('div');ba.className='block-actual-badge';ba.textContent='✓';el.appendChild(ba)}
+  if(h>32){const tm=document.createElement('div');tm.className='block-time';tm.textContent=`${fmtTime(b.start)} â ${fmtTime(b.end)}`;el.appendChild(tm)}
+  if(mode==='actual'){const ba=document.createElement('div');ba.className='block-actual-badge';ba.textContent='â';el.appendChild(ba)}
   function startBlockDrag(e){
     e.stopPropagation();
     const rect=el.getBoundingClientRect(),y=cY(e);
@@ -721,9 +725,9 @@ function makeBlockEl(b){
   return el;
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    WEEK VIEW
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function renderWeekView(){
   const dates=getWeekDates(curDate);
   const todayKey=dayKey(new Date());
@@ -782,9 +786,9 @@ function renderWeekView(){
   renderBreakdown('weekBreakdown',aggregateHours(keys),'this week');
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    MONTH VIEW
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function renderMonthView(){
   const todayKey=dayKey(new Date());
   // Day headers
@@ -835,9 +839,9 @@ function renderMonthView(){
   renderBreakdown('monthBreakdown',aggregateHours(keys),`in ${MONTHS[mon]}`);
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    BREAKDOWN CHART
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function renderBreakdown(containerId,hoursMap,label){
   const el=document.getElementById(containerId);
   el.innerHTML='';
@@ -864,13 +868,13 @@ function renderBreakdown(containerId,hoursMap,label){
   });
   const total=entries.reduce((s,[,h])=>s+h,0);
   const footer=document.createElement('div');footer.className='breakdown-footer';
-  footer.textContent=`${total.toFixed(1)} hours logged ${label} · click any day to explore`;
+  footer.textContent=`${total.toFixed(1)} hours logged ${label} Â· click any day to explore`;
   el.appendChild(footer);
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    CHECK-IN / DOMAINS / NOTE / ENCOURAGEMENT
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function renderCheckin(){
   const ci=day(curKey).checkin;
   document.querySelectorAll('[data-f]').forEach(btn=>btn.classList.toggle('on',btn.dataset.v===ci[btn.dataset.f]));
@@ -927,14 +931,14 @@ function renderTemplates(){
     const row=document.createElement('div');row.className='tmpl-item';
     const name=document.createElement('span');name.className='tmpl-name';name.textContent=t.name;
     const apply=document.createElement('button');apply.className='tmpl-apply';apply.textContent='Apply';apply.addEventListener('click',()=>applyTemplate(t));
-    const del=document.createElement('button');del.className='tmpl-del';del.title='Delete';del.innerHTML='×';del.addEventListener('click',()=>deleteTemplate(t.id));
+    const del=document.createElement('button');del.className='tmpl-del';del.title='Delete';del.innerHTML='Ã';del.addEventListener('click',()=>deleteTemplate(t.id));
     row.append(name,apply,del);list.appendChild(row);
   });
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    INTERACTIONS
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function toggleDomain(id){
   const d=day(curKey),i=d.domains.indexOf(id);i>=0?d.domains.splice(i,1):d.domains.push(id);
   saveDB();renderDomains();renderEnc();
@@ -943,9 +947,9 @@ function setCheckin(field,val){
   const ci=day(curKey).checkin;ci[field]=ci[field]===val?null:val;saveDB();renderCheckin();
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    VIEW SWITCHING
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function switchView(v){
   view=v;
   // desktop view toggle buttons
@@ -963,7 +967,7 @@ function switchView(v){
   render();
 }
 
-let mInsMode='week'; // 'week' | 'month' — insights sub-toggle
+let mInsMode='week'; // 'week' | 'month' â insights sub-toggle
 
 function switchMobileTab(tab){
   activeTab=tab;
@@ -1012,7 +1016,7 @@ function renderMobileInsights(){
     const fmt=x=>`${MONTHS[x.getMonth()].slice(0,3)} ${x.getDate()}`;
     const titleEl=document.createElement('div');
     titleEl.style.cssText='font-size:12px;font-weight:700;color:var(--muted);margin-bottom:10px';
-    titleEl.textContent=`${fmt(wd[0])} – ${fmt(wd[6])}`;
+    titleEl.textContent=`${fmt(wd[0])} â ${fmt(wd[6])}`;
     tapEl.appendChild(titleEl);
 
     // Tapestry bars
@@ -1024,7 +1028,7 @@ function renderMobileInsights(){
       const barH=total>0?Math.max(8,Math.round((total/maxT)*148)):3;
 
       const col=document.createElement('div');col.className='tap-col';
-      col.title=`${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][d.getDay()===0?6:d.getDay()-1]} — ${Math.round(total/60*10)/10}h`;
+      col.title=`${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][d.getDay()===0?6:d.getDay()-1]} â ${Math.round(total/60*10)/10}h`;
       col.addEventListener('click',()=>{if(total>0){curDate=new Date(d);switchMobileTab('day')}});
 
       if(total===0){
@@ -1108,9 +1112,9 @@ function renderMobileInsights(){
   }
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    NAVIGATION (prev/next changes based on view)
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function navigate(dir){
   if(activeTab==='insights'){
     // Mobile insights: navigate by week or month based on sub-toggle
@@ -1124,9 +1128,9 @@ function navigate(dir){
   render();
 }
 
-/* ════════════════════════════════════════════════════════════
-   DRAG — CREATE + MOVE
-   ════════════════════════════════════════════════════════════ */
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+   DRAG â CREATE + MOVE
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 let creating=false,createStart=0,createEnd=0,previewEl=null,hintEl=null;
 let pendingCreate=false,pendingStartY=0;
 const CREATE_THRESHOLD=18; // px of drag needed before committing to block creation
@@ -1154,7 +1158,7 @@ function setupDrag(){
         const endRel=Math.min(startRel+blockDrag.duration,(END_H-START_H)*60);
         const adj=endRel-blockDrag.duration;
         blockDrag.blockEl.style.top=(adj/30*SLOT_H)+'px';
-        if(blockDrag.hintEl)blockDrag.hintEl.textContent=`${fmtTime(toTime(adj+START_H*60))} → ${fmtTime(toTime(endRel+START_H*60))}`;
+        if(blockDrag.hintEl)blockDrag.hintEl.textContent=`${fmtTime(toTime(adj+START_H*60))} â ${fmtTime(toTime(endRel+START_H*60))}`;
         blockDrag._adj=adj;
       }
       if(e.cancelable)e.preventDefault();return;
@@ -1196,12 +1200,12 @@ function updateCP(){
   if(!previewEl)return;
   const top=(createStart/30)*SLOT_H,h=Math.max(SLOT_H,((createEnd-createStart)/30)*SLOT_H);
   previewEl.style.top=top+'px';previewEl.style.height=h+'px';
-  if(hintEl){hintEl.style.top=top+'px';hintEl.textContent=`${fmtTime(toTime(createStart+START_H*60))} → ${fmtTime(toTime(Math.max(createEnd,createStart+30)+START_H*60))}`}
+  if(hintEl){hintEl.style.top=top+'px';hintEl.textContent=`${fmtTime(toTime(createStart+START_H*60))} â ${fmtTime(toTime(Math.max(createEnd,createStart+30)+START_H*60))}`}
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    BLOCK MODAL
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function openCreate(start,end){
   editId=null;
   document.getElementById('modalTitle').textContent='Add time block';
@@ -1209,6 +1213,7 @@ function openCreate(start,end){
   document.getElementById('blockStart').value=start||'09:00';
   document.getElementById('blockEnd').value=end||'10:00';
   document.getElementById('modalDelete').style.display='none';
+  document.getElementById('blockDateGroup').style.display='none';
   pickCat('work');openOverlay('blockOverlay');
   setTimeout(()=>document.getElementById('blockLabel').focus(),80);
 }
@@ -1220,6 +1225,8 @@ function openEdit(id){
   document.getElementById('blockStart').value=b.start;
   document.getElementById('blockEnd').value=b.end;
   document.getElementById('modalDelete').style.display='';
+  document.getElementById('blockDateGroup').style.display='';
+  document.getElementById('blockDate').value=curKey;
   pickCat(b.category||'work');openOverlay('blockOverlay');
   setTimeout(()=>document.getElementById('blockLabel').focus(),80);
 }
@@ -1230,8 +1237,10 @@ function saveBlock(){
   const end=document.getElementById('blockEnd').value;
   if(!start||!end)return;
   if(toMin(end)<=toMin(start)){const el=document.getElementById('blockEnd');el.style.borderColor='#D04878';setTimeout(()=>el.style.borderColor='',1600);return}
-  const d=day(curKey);if(!d[mode])d[mode]=[];
-  if(editId){const i=d[mode].findIndex(b=>b.id===editId);if(i>=0)d[mode][i]={...d[mode][i],label,start,end,category:selCat}}
+  const targetKey=editId?(document.getElementById('blockDate').value||curKey):curKey;
+  if(editId&&targetKey!==curKey){const src=day(curKey);src[mode]=(src[mode]||[]).filter(b=>b.id!==editId)}
+  const d=day(targetKey);if(!d[mode])d[mode]=[];
+  if(editId){const i=d[mode].findIndex(b=>b.id===editId);if(i>=0)d[mode][i]={...d[mode][i],label,start,end,category:selCat};else d[mode].push({id:editId,label,start,end,category:selCat})}
   else{const id=Date.now().toString(36)+Math.random().toString(36).slice(2,6);d[mode].push({id,label,start,end,category:selCat})}
   if(!d.domains.includes(selCat))d.domains.push(selCat);
   saveDB();closeOverlay('blockOverlay');renderBlocks();renderDomains();renderEnc();
@@ -1241,9 +1250,9 @@ function deleteBlock(){
   saveDB();closeOverlay('blockOverlay');renderBlocks();
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    TEMPLATES
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function promptSaveTemplate(){document.getElementById('tmplDd').classList.remove('open');document.getElementById('tmplNameInput').value='';openOverlay('tmplOverlay');setTimeout(()=>document.getElementById('tmplNameInput').focus(),80)}
 function confirmSaveTemplate(){
   const name=document.getElementById('tmplNameInput').value.trim();if(!name)return;
@@ -1260,9 +1269,9 @@ function applyTemplate(t){
 }
 function deleteTemplate(id){db._templates=(db._templates||[]).filter(t=>t.id!==id);saveDB();renderTemplates()}
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    EXPORT / IMPORT
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function exportData(){
   const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});
   const url=URL.createObjectURL(blob);const a=document.createElement('a');
@@ -1272,13 +1281,13 @@ function exportData(){
 function importData(file){
   if(!file)return;
   const reader=new FileReader();
-  reader.onload=ev=>{try{Object.assign(db,JSON.parse(ev.target.result));saveDB();render();alert('✓ Backup restored.')}catch{alert('Could not read that file.')}};
+  reader.onload=ev=>{try{Object.assign(db,JSON.parse(ev.target.result));saveDB();render();alert('â Backup restored.')}catch{alert('Could not read that file.')}};
   reader.readAsText(file);
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    PWA SETUP
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 const APP_ICON_URL='https://raw.githubusercontent.com/caraqu/gentle-life/main/icon.png';
 
 function installPWA(){
@@ -1294,15 +1303,15 @@ function installPWA(){
   document.head.appendChild(ml);
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    OVERLAYS
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function openOverlay(id){document.getElementById(id).classList.add('open')}
 function closeOverlay(id){document.getElementById(id).classList.remove('open')}
 
-/* ════════════════════════════════════════════════════════════
+/* ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
    INIT
-   ════════════════════════════════════════════════════════════ */
+   ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 function init(){
   installPWA();loadDB();renderLegend();renderCatGrid();setupDrag();
 
