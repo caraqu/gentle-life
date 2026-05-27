@@ -574,7 +574,7 @@ let activeTab = 'day';      // mobile
    ════════════════════════════════════════════════════════════ */
 function loadDB(){try{db=JSON.parse(localStorage.getItem('gl_v3')||'{}')}catch{db={}}}
 function saveDB(){localStorage.setItem('gl_v3',JSON.stringify(db))}
-function dayKey(d){return d.toISOString().split('T')[0]}
+function dayKey(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return`${y}-${m}-${day}`}
 function day(key){
   if(!db[key])db[key]={planned:[],actual:[],checkin:{energy:null,mood:null,note:''},domains:[]};
   return db[key];
